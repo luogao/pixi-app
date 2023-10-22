@@ -1,0 +1,87 @@
+{"frames": {
+
+"player_stand_01.png":
+{
+	"frame": {"x":153,"y":1,"w":73,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":102},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_02.png":
+{
+	"frame": {"x":228,"y":1,"w":73,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":102},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_03.png":
+{
+	"frame": {"x":303,"y":1,"w":73,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":102},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_04.png":
+{
+	"frame": {"x":1,"y":1,"w":74,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":102},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_05.png":
+{
+	"frame": {"x":77,"y":1,"w":74,"h":102},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":102},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_06.png":
+{
+	"frame": {"x":378,"y":1,"w":74,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":74,"h":101},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_07.png":
+{
+	"frame": {"x":529,"y":1,"w":73,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":73,"h":100},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_08.png":
+{
+	"frame": {"x":604,"y":1,"w":73,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":73,"h":100},
+	"sourceSize": {"w":74,"h":102}
+},
+"player_stand_09.png":
+{
+	"frame": {"x":454,"y":1,"w":73,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":73,"h":101},
+	"sourceSize": {"w":74,"h":102}
+}},
+"animations": {
+	"player_stand": ["player_stand_01.png","player_stand_02.png","player_stand_03.png","player_stand_04.png","player_stand_05.png","player_stand_06.png","player_stand_07.png","player_stand_08.png","player_stand_09.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "player_stand.png",
+	"format": "RGBA8888",
+	"size": {"w":678,"h":104},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b9c1ebc7b7e1d9bfbdec0c6671359c0d:4c2cf44814120b1944f657ebd0cd1079:b0a89830ea3ff1b9ae436f84a750dfeb$"
+}
+}

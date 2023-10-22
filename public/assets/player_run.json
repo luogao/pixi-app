@@ -1,0 +1,79 @@
+{"frames": {
+
+"player_run_01.png":
+{
+	"frame": {"x":247,"y":1,"w":118,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":118,"h":87},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_02.png":
+{
+	"frame": {"x":236,"y":90,"w":84,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":9,"w":84,"h":81},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_03.png":
+{
+	"frame": {"x":1,"y":89,"w":113,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":5,"w":113,"h":82},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_04.png":
+{
+	"frame": {"x":116,"y":90,"w":118,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":118,"h":81},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_05.png":
+{
+	"frame": {"x":1,"y":1,"w":120,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":4,"w":120,"h":86},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_06.png":
+{
+	"frame": {"x":367,"y":1,"w":84,"h":82},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":8,"w":84,"h":82},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_07.png":
+{
+	"frame": {"x":322,"y":90,"w":114,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":3,"w":114,"h":80},
+	"sourceSize": {"w":123,"h":90}
+},
+"player_run_08.png":
+{
+	"frame": {"x":123,"y":1,"w":122,"h":84},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":122,"h":84},
+	"sourceSize": {"w":123,"h":90}
+}},
+"animations": {
+	"player_run": ["player_run_01.png","player_run_02.png","player_run_03.png","player_run_04.png","player_run_05.png","player_run_06.png","player_run_07.png","player_run_08.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "player_run.png",
+	"format": "RGBA8888",
+	"size": {"w":450,"h":172},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ee4af8010f06958b5f454c61f60be715:d1b4cece55cb57f16e9f817a0405130e:2744524e59dc2e7ad489f31d020c6495$"
+}
+}
