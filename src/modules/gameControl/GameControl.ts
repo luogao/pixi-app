@@ -23,7 +23,11 @@ class GameControl extends EventEmitter {
   }
 
   updateHP = (actionCall: (HP: number) => number) => {
-    this.HP = actionCall(this.HP)
+    this.HP =
+      actionCall(this.HP) >= GameControl.DefaultHP
+        ? GameControl.DefaultHP
+        : actionCall(this.HP)
+        
     this.emitStateChange()
     if (this.HP <= 0) {
       this.GG()

@@ -30,7 +30,7 @@ export default class GameScene extends Container implements IScene {
   private onHitTip = new Text('', {
     fontSize: 20,
     fontWeight: 'bold',
-    fill: '#ffe321',
+    fill: '#eee',
   })
 
   constructor() {
@@ -138,10 +138,11 @@ export default class GameScene extends Container implements IScene {
     this.showHitTip(`-${GameControl.ON_HIT_HP}HP`)
   }
 
-  showHitTip = (tip: string) => {
+  showHitTip = (tip: string, color?: string) => {
     this.onHitTip.visible = true
     this.onHitTip.text = tip
     this.onHitTip.position = this.character.position
+    this.onHitTip.style.fill = color ? color : '#eee'
 
     new Tween(this.onHitTip.position)
       .to({
@@ -160,7 +161,7 @@ export default class GameScene extends Container implements IScene {
       return oldHP + GameControl.ON_HIT_HEART
     })
     this.heart.sprite.visible = false
-    this.showHitTip(`+${GameControl.ON_HIT_HEART}HP`)
+    this.showHitTip(`+${GameControl.ON_HIT_HEART}HP`, '#ff0eea')
   }
 
   update(framesPassed: number): void {
