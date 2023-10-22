@@ -17,6 +17,7 @@
     "@theatre/core": "^0.6.0",
     "@theatre/studio": "^0.6.0",
     "dayjs": "^1.11.7",
+    "eventemitter3": "^5.0.1",
     "gsap": "^3.11.4",
     "matter-js": "^0.19.0",
     "pixi.js": "^7.3.1",

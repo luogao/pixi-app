@@ -1,34 +1,140 @@
-import { Container } from 'pixi.js'
+import { AnimatedSprite, Container } from 'pixi.js'
 import CharacterAnimations from './CharacterAnimations'
 import { IScene } from '../../scenes/Manager'
+import GameControl from '../gameControl/GameControl'
+import { GameState } from '../../types'
+import { Tween } from 'tweedle.js'
+import createInterpolation, {
+  ExtrapolateType,
+} from '../../utils/createInterpolation'
 
-type CharacterOptions = {
-  movements: { jsonConfig: string; name: string; initVisible: boolean }[]
-}
+type CharacterMovements = {
+  jsonConfig: string
+  name: string
+  speed?: number
+  loop: boolean
+}[]
+
+const characterMovements: CharacterMovements = [
+  {
+    jsonConfig: 'playerJumpJson',
+    name: 'player_jump',
+    loop: false,
+    speed: 1 / 3,
+  },
+  {
+    jsonConfig: 'playerRunJson',
+    name: 'player_run',
+    loop: true,
+  },
+  {
+    jsonConfig: 'playerStandJson',
+    name: 'player_stand',
+    loop: true,
+  },
+]
+
+const initY = 650
+
+const characterInterpolation = createInterpolation({
+  inputRange: [0, 1, 6, 12],
+  outputRange: [initY, initY, 400, initY],
+  extrapolate: ExtrapolateType.clamp,
+})
 
 class Character extends Container implements IScene {
-  constructor(options: CharacterOptions) {
+  constructor({ gameControl }: { gameControl: GameControl }) {
     super()
-    this.init(options)
+    this.gameControl = gameControl
+    this.gameControl.on('onGameStateChange', this.handleGameStateChange)
+    this.position.x = 120
+    this.position.y = initY
+    this.init()
   }
 
-  init = (options: CharacterOptions) => {
-    const { movements } = options
+  gameControl: GameControl
 
-    movements.forEach((movement, index) => {
+  currentMovement = 'player_stand'
+
+  private handleMovementEnd = (name: string) => {
+    if (name === 'player_jump') {
+      this.changeMovement('player_run')
+    }
+  }
+
+  handleGameStateChange = ({ gameState }: { gameState: GameState }) => {
+    if (gameState === GameState.running) {
+      this.run()
+    }
+  }
+
+  run = () => {
+    this.changeMovement('player_run')
+  }
+
+  jump = () => {
+    this.changeMovement('player_jump')
+  }
+
+  onKeyDown = (e: any) => {
+    if (this.gameControl.getState() === GameState.running) {
+      if (e.code === 'Space' && this.currentMovement !== 'player_jump') {
+        this.jump()
+      }
+    }
+  }
+
+  handleMovementFrameChange = ({
+    name,
+    currentFrame,
+  }: {
+    name: string
+    currentFrame: number
+  }) => {
+    if (name === 'player_jump') {
+      const y = characterInterpolation(currentFrame) as number
+      this.position.y = y
+    }
+  }
+
+  init = () => {
+    // 初始化角色的动作
+    characterMovements.forEach((movement) => {
       const characterAnimation = new CharacterAnimations({
         animationConfig: movement.jsonConfig,
         animationName: movement.name,
         initPosition: {
-          x: 200,
-          y: 650,
+          x: 0,
+          y: 0,
         },
-        speed: 1 / 4.5,
-        initVisible: movement.initVisible,
+        speed: movement.speed || 1 / 4.5,
+        initVisible: this.currentMovement === movement.name, // 如果是初始动作，则 visible 设置成 true
+        onAnimationEnd: this.handleMovementEnd,
+        loop: movement.loop,
+        onFrameChange: this.handleMovementFrameChange,
       })
 
       this.addChild(characterAnimation.animation)
     })
+
+    document.addEventListener('keydown', this.onKeyDown)
+  }
+
+  changeMovement = (movement: string) => {
+    const nextMovement = this.getChildByName(movement) as AnimatedSprite
+    const currentMovement = this.getChildByName(
+      this.currentMovement
+    ) as AnimatedSprite
+    if (nextMovement) {
+      // 当前动作
+      currentMovement!.visible = false
+      currentMovement.gotoAndStop(0)
+
+      // 下一个动作
+      nextMovement.visible = true
+      nextMovement.gotoAndPlay(0)
+      this.currentMovement = movement
+    }
   }
 
   update = () => {}

@@ -25,24 +25,6 @@ let sheepSpeed = 8
 let oldSheepHitState = false
 let sheepHitCount = 0
 
-const characterMovements = [
-  {
-    jsonConfig: 'playerJumpJson',
-    name: 'player_jump',
-    initVisible: false,
-  },
-  {
-    jsonConfig: 'playerRunJson',
-    name: 'player_run',
-    initVisible: false,
-  },
-  {
-    jsonConfig: 'playerStandJson',
-    name: 'player_stand',
-    initVisible: true,
-  },
-]
-
 export default class GameScene extends Container implements IScene {
   // private theatreProject = getProject('pixi sun and moon')
   private theatreProject = getProject('pixi sun and moon', {
@@ -77,11 +59,13 @@ export default class GameScene extends Container implements IScene {
   private track: ReturnType<typeof RunningTrack>
   private obstacle: ReturnType<typeof Obstacle>
   private sheep: ReturnType<typeof Sheep>
-  private character: Container
+  private character: Character
   private gameControl: GameControl
 
   constructor() {
     super()
+    this.gameControl = new GameControl()
+
     this.eventMode = 'dynamic'
 
     this.theatreProject.ready.then(() => {
@@ -94,9 +78,20 @@ export default class GameScene extends Container implements IScene {
     // this.runningMan = RunningMan(this)
     this.obstacle = Obstacle(this)
     this.sheep = Sheep(this)
-    this.character = new Character({ movements: characterMovements })
-    this.gameControl = new GameControl()
+    this.character = new Character({ gameControl: this.gameControl })
+    this.gameControl.on('onGameStateChange', this.handleGameStateChange)
     this.init()
+  }
+
+  handleGameStateChange = ({ gameState }: { gameState: GameState }) => {
+    switch (gameState) {
+      case GameState.paused:
+        break
+      case GameState.running:
+        break
+      case GameState.end:
+        break
+    }
   }
 
   private sheepMoving() {
@@ -258,6 +253,7 @@ export default class GameScene extends Container implements IScene {
       this.sheepMoving()
       this.moving()
       this.track.update()
+      this.character.update()
     }
 
     this.richText.text = dayjs().format('@ YYYY-MM-DD, HH:mm:ss ')

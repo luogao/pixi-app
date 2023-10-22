@@ -1,9 +1,11 @@
 import { Container, Graphics, Sprite } from 'pixi.js'
 import { GameState } from '../../types'
 import { Manager } from '../../scenes/Manager'
+import EventEmitter from 'eventemitter3'
 
-class GameControl {
+class GameControl extends EventEmitter {
   constructor() {
+    super()
     this.init()
   }
 
@@ -51,17 +53,22 @@ class GameControl {
 
   getState = () => this.gameState
 
+  private changeState = (state: GameState) => {
+    this.gameState = state
+    this.emit('onGameStateChange', { gameState: this.gameState })
+  }
+
   start = () => {
-    this.gameState = GameState.running
+    this.changeState(GameState.running)
     this.startButton.destroy()
   }
 
   pause = () => {
-    this.gameState = GameState.paused
+    this.changeState(GameState.paused)
   }
 
   GG = () => {
-    this.gameState = GameState.end
+    this.changeState(GameState.end)
   }
 }
 
