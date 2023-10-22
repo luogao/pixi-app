@@ -5,9 +5,11 @@ import cloud2 from './images/cloud2.png'
 const playerJump = '/assets/player_jump.png'
 const playerStand = '/assets/player_stand.png'
 const playerRun = '/assets/player_run.png'
+const playerGG = '/assets/player_gg.png'
 const playerJumpJson = '/assets/player_jump.json'
 const playerRunJson = '/assets/player_run.json'
 const playerStandJson = '/assets/player_stand.json'
+const playerGGJson = '/assets/player_gg.json'
 
 const manifest: AssetsManifest = {
   bundles: [
@@ -48,6 +50,10 @@ const manifest: AssetsManifest = {
           src: playerRun,
         },
         {
+          alias: 'playerGG',
+          src: playerGG,
+        },
+        {
           alias: 'playerJumpJson',
           src: playerJumpJson,
         },
@@ -58,6 +64,10 @@ const manifest: AssetsManifest = {
         {
           alias: 'playerStandJson',
           src: playerStandJson,
+        },
+        {
+          alias: 'playerGGJson',
+          src: playerGGJson,
         },
       ],
     },

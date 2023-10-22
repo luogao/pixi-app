@@ -3,7 +3,7 @@ import CharacterAnimations from './CharacterAnimations'
 import { IScene } from '../../scenes/Manager'
 import GameControl from '../gameControl/GameControl'
 import { GameState } from '../../types'
-import { Tween } from 'tweedle.js'
+
 import createInterpolation, {
   ExtrapolateType,
 } from '../../utils/createInterpolation'
@@ -20,7 +20,7 @@ const characterMovements: CharacterMovements = [
     jsonConfig: 'playerJumpJson',
     name: 'player_jump',
     loop: false,
-    speed: 1 / 3,
+    speed: 1 / 5,
   },
   {
     jsonConfig: 'playerRunJson',
@@ -31,6 +31,11 @@ const characterMovements: CharacterMovements = [
     jsonConfig: 'playerStandJson',
     name: 'player_stand',
     loop: true,
+  },
+  {
+    jsonConfig: 'playerGGJson',
+    name: 'player_gg',
+    loop: false,
   },
 ]
 
@@ -47,7 +52,7 @@ class Character extends Container implements IScene {
     super()
     this.gameControl = gameControl
     this.gameControl.on('onGameStateChange', this.handleGameStateChange)
-    this.position.x = 120
+    this.position.x = 200
     this.position.y = initY
     this.init()
   }
@@ -63,8 +68,12 @@ class Character extends Container implements IScene {
   }
 
   handleGameStateChange = ({ gameState }: { gameState: GameState }) => {
-    if (gameState === GameState.running) {
+    if (gameState === GameState.running && this.currentMovement !== 'player_jump') {
       this.run()
+    }
+
+    if (gameState === GameState.end) {
+      this.gg()
     }
   }
 
@@ -74,6 +83,10 @@ class Character extends Container implements IScene {
 
   jump = () => {
     this.changeMovement('player_jump')
+  }
+
+  gg = () => {
+    this.changeMovement('player_gg')
   }
 
   onKeyDown = (e: any) => {

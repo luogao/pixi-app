@@ -10,8 +10,8 @@ export default function (container: Container) {
   sheep.position.x = container.width + 2000
 
   sheep.scale = {
-    x: 0.5,
-    y: 0.5,
+    x: 0.2,
+    y: 0.2,
   }
 
   container.addChild(sheep)

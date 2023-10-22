@@ -9,7 +9,6 @@ const screenHeight = Math.max(
   window.innerHeight || 0
 )
 
-
 const appSize = {
   width: screenWidth,
   height: screenHeight,
