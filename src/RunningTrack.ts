@@ -2,10 +2,9 @@ import { Container, Sprite } from 'pixi.js'
 import icon_road from './images/icon_road.png'
 
 export default function (container: Container) {
-  const runningTrack = Sprite.from(icon_road)
+  const runningTrack = Sprite.from(icon_road) // 加载跑道图片资源
   runningTrack.anchor.set(0, 0.5)
   runningTrack.position.y = 650
-
   runningTrack.position.x = -100
   runningTrack.alpha = 0.8
 
@@ -17,6 +16,7 @@ export default function (container: Container) {
   container.addChild(runningTrack)
 
   const update = () => {
+    // 每一帧向左偏移 5
     runningTrack.position.x -= 5
     if (runningTrack.position.x < -2100) {
       runningTrack.position.x = -100

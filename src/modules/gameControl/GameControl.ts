@@ -27,7 +27,7 @@ class GameControl extends EventEmitter {
       actionCall(this.HP) >= GameControl.DefaultHP
         ? GameControl.DefaultHP
         : actionCall(this.HP)
-        
+
     this.emitStateChange()
     if (this.HP <= 0) {
       this.GG()
@@ -47,7 +47,7 @@ class GameControl extends EventEmitter {
 
   createStartButton = () => {
     const startButtonSprite = Sprite.from('/assets/start_button.png')
-    startButtonSprite.scale.set(1)
+    startButtonSprite.scale.set(0.5)
     startButtonSprite.anchor.set(0.5)
     startButtonSprite.zIndex = 9999
     startButtonSprite.position = {
@@ -67,9 +67,15 @@ class GameControl extends EventEmitter {
   renderStartView = () => {
     const mask = this.createMask()
     const startButtonSprite = this.createStartButton()
+    const intro = Sprite.from('/assets/game_intro.png')
+    intro.anchor.set(0.5)
+    intro.position.x = Manager.width / 2
+    intro.position.y = Manager.height / 2 - 100
 
     this.startView.name = 'StartButton'
     this.startView.zIndex = 99999
+    intro.zIndex = 99999
+    this.startView.addChild(intro)
     this.startView.addChild(mask)
     this.startView.addChild(startButtonSprite)
     this.startView.sortChildren()
@@ -81,7 +87,6 @@ class GameControl extends EventEmitter {
     const mask = this.createMask()
 
     const text = new Text('GAME OVER', {
-      fontFamily: '',
       fontWeight: '700',
       fill: '#99B080',
       fontSize: 100,
@@ -130,13 +135,13 @@ class GameControl extends EventEmitter {
     this.gameOverContainer.visible = false
   }
 
-  pause = () => {
-    this.changeState(GameState.paused)
-  }
-
   GG = () => {
     this.changeState(GameState.end)
     this.gameOverContainer.visible = true
+  }
+
+  pause = () => {
+    this.changeState(GameState.paused)
   }
 }
 
