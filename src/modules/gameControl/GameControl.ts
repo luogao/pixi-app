@@ -52,7 +52,7 @@ class GameControl extends EventEmitter {
     startButtonSprite.zIndex = 9999
     startButtonSprite.position = {
       x: Manager.width * 0.5,
-      y: Manager.height * 0.5,
+      y: Manager.height * 0.65,
     }
 
     startButtonSprite.cursor = 'pointer'
@@ -70,7 +70,7 @@ class GameControl extends EventEmitter {
     const intro = Sprite.from('/assets/game_intro.png')
     intro.anchor.set(0.5)
     intro.position.x = Manager.width / 2
-    intro.position.y = Manager.height / 2 - 100
+    intro.position.y = Manager.height / 2 - 50
 
     this.startView.name = 'StartButton'
     this.startView.zIndex = 99999
@@ -99,8 +99,6 @@ class GameControl extends EventEmitter {
     }
 
     const startButtonSprite = this.createStartButton()
-    startButtonSprite.scale.set(0.7)
-    startButtonSprite.position.y = startButtonSprite.position.y + 100
     this.gameOverContainer.addChild(mask)
     this.gameOverContainer.addChild(text)
     this.gameOverContainer.addChild(startButtonSprite)

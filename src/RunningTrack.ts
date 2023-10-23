@@ -1,10 +1,11 @@
 import { Container, Sprite } from 'pixi.js'
 import icon_road from './images/icon_road.png'
+import { Manager } from './scenes/Manager'
 
 export default function (container: Container) {
   const runningTrack = Sprite.from(icon_road) // 加载跑道图片资源
-  runningTrack.anchor.set(0, 0.5)
-  runningTrack.position.y = 650
+  runningTrack.anchor.set(0, 1.35)
+  runningTrack.position.y = Manager.height
   runningTrack.position.x = -100
   runningTrack.alpha = 0.8
 

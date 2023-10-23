@@ -1,17 +1,9 @@
 import { LoaderScene } from './scenes/LoaderScene'
 import { Manager } from './scenes/Manager'
-const screenWidth = Math.max(
-  document.documentElement.clientWidth,
-  window.innerWidth || 0
-)
-const screenHeight = Math.max(
-  document.documentElement.clientHeight,
-  window.innerHeight || 0
-)
 
 const appSize = {
-  width: screenWidth,
-  height: screenHeight,
+  width: 800,
+  height: 500,
 }
 
 function gameInit() {

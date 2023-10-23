@@ -44,11 +44,11 @@ export default class GameScene extends Container implements IScene {
       checkCollisionTarget: this.character,
       initPosition: {
         x: Manager.width * 2 * Math.random() + Manager.width + 100,
-        y: 600,
+        y: 450,
       },
       initScale: {
-        x: 0.18,
-        y: 0.18,
+        x: 0.12,
+        y: 0.12,
       },
     })
     this.sheep = new GameObject({
@@ -56,11 +56,11 @@ export default class GameScene extends Container implements IScene {
       checkCollisionTarget: this.character,
       initPosition: {
         x: Manager.width * 2 * Math.random() + Manager.width + 100,
-        y: 600,
+        y: 450,
       },
       initScale: {
-        x: 0.18,
-        y: 0.18,
+        x: 0.13,
+        y: 0.13,
       },
     })
     this.heart = new Heart({
@@ -68,7 +68,7 @@ export default class GameScene extends Container implements IScene {
       checkCollisionTarget: this.character,
       initPosition: {
         x: Manager.width * 2 * Math.random() + Manager.width + 10000,
-        y: 300,
+        y: 176,
       },
       initScale: {
         x: 1,

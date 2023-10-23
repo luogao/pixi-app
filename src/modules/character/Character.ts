@@ -1,6 +1,6 @@
 import { AnimatedSprite, Container } from 'pixi.js'
 import CharacterAnimations from './CharacterAnimations'
-import { IScene } from '../../scenes/Manager'
+import { IScene, Manager } from '../../scenes/Manager'
 import GameControl from '../gameControl/GameControl'
 import { GameState } from '../../types'
 
@@ -39,11 +39,11 @@ const characterMovements: CharacterMovements = [
   },
 ]
 
-const initY = 650
+const initY = 450
 
 const characterInterpolation = createInterpolation({
   inputRange: [0, 1, 6, 12],
-  outputRange: [initY, initY, 400, initY],
+  outputRange: [initY, initY, 320, initY],
   extrapolate: ExtrapolateType.clamp,
 })
 
@@ -52,7 +52,7 @@ class Character extends Container implements IScene {
     super()
     this.gameControl = gameControl
     this.gameControl.on('onGameStateChange', this.handleGameStateChange)
-    this.position.x = 200
+    this.position.x = 120
     this.position.y = initY
     this.init()
   }

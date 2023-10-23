@@ -53,8 +53,8 @@ export class Manager {
     // Add the ticker
     Manager.app.ticker.add(Manager.update)
 
-    window.addEventListener('resize', Manager.resize)
-    Manager.resize()
+    // window.addEventListener('resize', Manager.resize)
+    // Manager.resize()
   }
 
   public static resize(): void {

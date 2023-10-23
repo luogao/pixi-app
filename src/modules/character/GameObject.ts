@@ -13,7 +13,7 @@ class GameObject extends EventEmitter {
   }: GameObjectOptions) {
     super()
     this.sprite = Sprite.from(source)
-    this.sprite.anchor.set(0.5, 0.5)
+    this.sprite.anchor.set(0.5, 1)
     this.sprite.scale.set(initScale.x, initScale.y)
     this.sprite.position.set(initPosition.x, initPosition.y)
     this.checkCollisionTarget = checkCollisionTarget
@@ -34,7 +34,7 @@ class GameObject extends EventEmitter {
     }
   }
 
-  move = () => {
+  move = (frame?: number) => {
     this.sprite.position.x -= this.speed
 
     if (this.sprite.position.x < 0 && Math.random() < Math.random() * 0.8) {
@@ -44,7 +44,7 @@ class GameObject extends EventEmitter {
 
   update = (frame: number) => {
     this.checkHit()
-    this.move()
+    this.move(frame)
   }
 }
 
