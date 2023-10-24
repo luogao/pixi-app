@@ -1,4 +1,4 @@
-import { Container, Text } from 'pixi.js'
+import { Container, Text, Texture } from 'pixi.js'
 import { IScene, Manager } from './Manager'
 import dayjs from 'dayjs'
 import RunningTrack from '../RunningTrack'
@@ -96,6 +96,9 @@ export default class GameScene extends Container implements IScene {
     this.onHitTip.visible = false
     this.onHitTip.zIndex = 99
     this.onHitTip.anchor.set(0.5, 0.5)
+
+
+
 
     this.addChild(this.onHitTip)
     this.addChild(this.sheep.sprite)

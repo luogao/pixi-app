@@ -21,6 +21,10 @@ export class Manager {
     return Manager._height
   }
 
+  public static get render() {
+    return Manager.app
+  }
+
   public static addContainer(container: Container) {
     Manager.app.stage.addChild(container)
     Manager.app.stage.sortChildren()
